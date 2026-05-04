@@ -6,6 +6,18 @@ categories: [Bilgisayar Bilimleri, Reverse Engineering, Siber Güvenlik]
 tags: [tersine-muhendislik, decompile, malware-analizi]
 ---
 
+<style>
+  /* Bu blok sadece bu yazıdaki resimleri hedef alır ve küçültür */
+  article img {
+    max-width: 500px !important; /* Resimleri 500 piksele sabitler */
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 20px auto !important; /* Ortalar */
+    border-radius: 10px;
+  }
+</style>
+
 Bu konuya tam başlamadan önce biraz programlama dillerinden bahsetmemiz gerekiyor. Bilgisayarlar özünde sadece 0 ve 1 rakamlarından anlar ve iletişimi de bu şekilde sağlar. Buna machine code (makine kodu) diyoruz. Biz insanlar için ise bu sayılar pek anlamlı ve kullanılabilir değildir; işte bu yüzden programlama dilleri icat edilmiştir.
 
 ![binary](/assets/img/posts/04-05-2026/binary.png)
