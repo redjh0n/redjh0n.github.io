@@ -1,0 +1,60 @@
+<section id="random-quote-module">
+  <h2 class="panel-heading">Rastgele Bir Söz</h2>
+  <div class="content pb-1 ms-1 mt-2 text-muted" style="font-style: italic; font-size: 0.85rem; line-height: 1.5;">
+    <i class="fas fa-quote-left fa-fw" style="font-size: 0.7rem; opacity: 0.5; margin-right: 2px;"></i>
+    <span id="right-panel-quote">Yükleniyor...</span>
+  </div>
+</section>
+
+<script>
+  fetch('/assets/data/sozler.json')
+    .then(r => r.json())
+    .then(sozler => {
+      var kutu = document.getElementById('right-panel-quote');
+      if (kutu && sozler.length > 0) {
+        kutu.innerText = sozler[Math.floor(Math.random() * sozler.length)];
+      }
+    });
+</script>
+
+
+<!-- Get 5 last posted/updated posts -->
+
+{% assign MAX_SIZE = 5 %}
+
+{% assign all_list = '' | split: '' %}
+
+{% for post in site.posts %}
+  {% assign datetime = post.last_modified_at | default: post.date %}
+
+  {% capture elem %}
+    {{- datetime | date: "%Y%m%d%H%M%S" -}}::{{- forloop.index0 -}}
+  {% endcapture %}
+
+  {% assign all_list = all_list | push: elem %}
+{% endfor %}
+
+{% assign all_list = all_list | sort | reverse %}
+
+{% assign update_list = '' | split: '' %}
+
+{% for entry in all_list limit: MAX_SIZE %}
+  {% assign update_list = update_list | push: entry %}
+{% endfor %}
+
+{% if update_list.size > 0 %}
+  <section id="access-lastmod">
+    <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.lastmod -}}</h2>
+    <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+      {% for item in update_list %}
+        {% assign index = item | split: '::' | last | plus: 0 %}
+        {% assign post = site.posts[index] %}
+        {% assign url = post.url | relative_url %}
+        <li class="text-truncate lh-lg">
+          <a href="{{ url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  <!-- #access-lastmod -->
+{% endif %}

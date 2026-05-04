@@ -1,0 +1,22 @@
+<!-- Açılır Kapanır Kategoriler Modülü -->
+<section>
+  <details>
+    <summary class="panel-heading" style="cursor: pointer; user-select: none; outline: none; list-style-type: disclosure-closed; font-size: 1.1rem; margin-bottom: 0;">
+      <i class="far fa-folder-open fa-fw"></i> Kategoriler <span style="font-size: 0.7rem; font-weight: normal; opacity: 0.5;">(Genişlet)</span>
+    </summary>
+    
+    <div class="content mt-3 ps-2">
+      <ul class="list-unstyled" style="font-size: 0.85rem;">
+        {% for category in site.categories %}
+          {% assign cat_name = category[0] %}
+          <li class="mb-2" style="border-left: 2px solid #ffbd2e; padding-left: 8px;">
+            <a href="{{ site.baseurl }}/categories/{{ cat_name | slugify | url_encode }}/" style="color: #d0d0d0; text-decoration: none;">
+              {{ cat_name }}
+            </a>
+            <span class="text-muted" style="font-size: 0.75rem; float: right;">[{{ category[1].size }}]</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </details>
+</section>
