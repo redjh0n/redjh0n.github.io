@@ -1,5 +1,6 @@
 ---
-title: Kapalı Kutuyu Açmak: Bir Yazılımın İçini Okumak Mümkün mü?
+layout: post
+title: 📦 Kapalı Kutuyu Açmak: Bir Yazılımın İçini Okumak Mümkün mü?
 date: 2026-05-04
 categories: [Bilgisayar Bilimleri, Reverse Engineering, Siber Güvenlik]
 tags: [tersine-muhendislik, decompile, malware-analizi]
